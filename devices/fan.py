@@ -34,6 +34,8 @@ class FourSpeedRealayFan:
         self._pin1 = device_cfg.getint('Fan', 'speed1pin')
         self._pin2 = device_cfg.getint('Fan', 'speed2pin')
         self._pin3 = device_cfg.getint('Fan', 'speed3pin')
+        self._pin4 = device_cfg.getint('Fan', 'alwaysHighPin')
+
         on_logic = device_cfg.get('Fan', 'on_logic')
         if on_logic.lower() == 'low':
             self.ON = GPIO.LOW
@@ -43,6 +45,10 @@ class FourSpeedRealayFan:
             self.OFF = GPIO.LOW
         else:
             raise Exception('Uknown logic level "%s" in device configuration. Expected "low" or "high".' % on_logic)
+
+        # set always_high to high
+        GPIO.setup(self._pin4, GPIO.OUT)
+        GPIO.output(self._pin1, self.ON)
 
         # loop through pins and set mode and state to 'high'
         for i in [self._pin1, self._pin2, self._pin3]:

@@ -19,6 +19,10 @@ class DeviceSettings(SettingsBase):
         return self.handle_setting_request('Fan', 'speed3pin', int, fan_speed_3_pin)
 
     @cherrypy.expose
+    def always_high_pin(self, always_high_pin=None):
+        return self.handle_setting_request('Fan', 'alwaysHighPin', int, always_high_pin)
+
+    @cherrypy.expose
     def fan_on_logic(self, fan_on_logic=None):
         if cherrypy.request.method == 'POST':
             if fan_on_logic == None:

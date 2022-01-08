@@ -5,6 +5,8 @@ version=1
 speed1pin=2
 speed2pin=3
 speed3pin=4
+alwaysHighPin=27
+
 on_logic=low
 
 [LightStrip]
