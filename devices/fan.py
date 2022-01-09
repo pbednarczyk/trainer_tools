@@ -44,15 +44,16 @@ class FourSpeedRealayFan:
             self.ON = GPIO.HIGH
             self.OFF = GPIO.LOW
         else:
-            raise Exception('Uknown logic level "%s" in device configuration. Expected "low" or "high".' % on_logic)t
+            raise Exception('Uknown logic level "%s" in device configuration. Expected "low" or "high".' % on_logic)
+
+        # set always_high to high
+        GPIO.setup(self._pin4, GPIO.OUT)
+        GPIO.output(self._pin4, self.ON)
 
         # loop through pins and set mode and state to 'high'
         for i in [self._pin1, self._pin2, self._pin3]:
             GPIO.setup(i, GPIO.OUT)
             GPIO.output(i, self.OFF)
-
-        # set always_high to high
-        GPIO.output(self._pin4, self.ON)
 
     def select_speed(self, speed):
         if self.current_speed == speed:
