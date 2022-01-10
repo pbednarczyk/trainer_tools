@@ -30,6 +30,7 @@ from scriptcommon import init_logging
 from sensors.antnode import AntPlusNode
 from devices.fan import FourSpeedRealayFan
 from devices.lightstrip import ColorStrip, RgbColor
+from devices.lightstrip2 import ColorStrip2
 from controllers.hrfancontroller import HRFanController
 from controllers.pwrlightcontroller import PowerLightController
 
@@ -77,8 +78,10 @@ def main():
     fan = FourSpeedRealayFan(device_cfg)
     logging.info('Initializing LED strip driver')
     color_strip = ColorStrip(device_cfg, LED_FREQ_HZ)
+    color_strip2 = ColorStrip2(device_cfg, LED_FREQ_HZ)
 
     signal.signal(signal.SIGTERM, lambda : color_strip.set_color(RgbColor(0, 0, 0)))
+    signal.signal(signal.SIGTERM, lambda : color_strip2.set_color(RgbColor(0, 0, 0)))
 
     logging.info('Creating ANT+ node')
     node = AntPlusNode(NETWORK_KEY)
@@ -93,7 +96,8 @@ def main():
         pwr_meter = node.attach_power_meter()
         logging.info('Initializing power light controller')
         plc = PowerLightController(node_stopper.stop_client2, node_stopper.cancel_stop_client2, cfg, pwr_meter, color_strip)
-        logging.info('Starting ANT+ node')        
+        plc = PowerLightController(node_stopper.stop_client2, node_stopper.cancel_stop_client2, cfg, pwr_meter, color_strip2)
+        logging.info('Starting ANT+ node')
         node.start()
     except Exception as e:
         logging.error('Caught exception "%s"' % str(e))
@@ -103,6 +107,7 @@ def main():
         fan.select_speed(0)
         logging.info('Turning off LED strip')
         color_strip.set_color(RgbColor(0, 0, 0))
+        color_strip2.set_color(RgbColor(0, 0, 0))
         logging.info('Stopping ANT+ node')
         node.stop()
 
