@@ -28,6 +28,12 @@ import logging
 from devices.lightstrip import RgbColor
 from tests.testneo.neopixel import Color, Adafruit_NeoPixel
 
+# TODO: Not sure what should be exposed through class contructor/setters
+LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
+LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
+LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
+LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
+
 class ColorStrip2:
     def __init__(self, device_cfg, led_freq):
         self._current_color = RgbColor(0, 0, 0)
