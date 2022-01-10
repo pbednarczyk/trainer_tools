@@ -33,12 +33,12 @@ class DeviceSettings(SettingsBase):
         return self.handle_setting_request('Fan', 'on_logic', str, fan_on_logic)
 
     @cherrypy.expose
-    def light_strip_pin(self, light_strip_pin2=None):
-        return self.handle_setting_request('LightStrip', 'pin', int, light_strip_pin2)
+    def light_strip_pin(self, light_strip_pin=None):
+        return self.handle_setting_request('LightStrip', 'pin', int, light_strip_pin)
 
     @cherrypy.expose
-    def light_strip_pin(self, light_strip_pin=None):
-        return self.handle_setting_request('LightStrip2', 'pin', int, light_strip_pin)
+    def light_strip_pin(self, light_strip_pin2=None):
+        return self.handle_setting_request('LightStrip2', 'pin', int, light_strip_pin2)
 
     @cherrypy.expose
     def light_strip_led_count(self, light_strip_led_count=None):
