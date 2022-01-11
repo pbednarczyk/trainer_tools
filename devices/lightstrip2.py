@@ -29,10 +29,10 @@ from devices.lightstrip import RgbColor
 from tests.testneo.neopixel import Color, Adafruit_NeoPixel
 
 # TODO: Not sure what should be exposed through class contructor/setters
-LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
-LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
-LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
-LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
+LED_DMA_2        = 10      # DMA channel to use for generating signal (try 10)
+LED_BRIGHTNESS_2 = 255     # Set to 0 for darkest and 255 for brightest
+LED_INVERT_2     = False   # True to invert the signal (when using NPN transistor level shift)
+LED_CHANNEL_2    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 class ColorStrip2:
     def __init__(self, device_cfg, led_freq):
@@ -40,7 +40,7 @@ class ColorStrip2:
         init_gpio()
         # Create NeoPixel object with appropriate configuration.
         logging.info('Initializing Neopixel driver with %u LEDs' % device_cfg.getint('LightStrip2', 'led_count'))
-        self._strip = Adafruit_NeoPixel(device_cfg.getint('LightStrip2', 'led_count'), device_cfg.getint('LightStrip2', 'pin'), led_freq, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+        self._strip = Adafruit_NeoPixel(device_cfg.getint('LightStrip2', 'led_count'), device_cfg.getint('LightStrip2', 'pin'), led_freq, LED_DMA_2, LED_INVERT_2, LED_BRIGHTNESS_2, LED_CHANNEL_2)
         # Intialize the library (must be called once before other functions).
         self._strip.begin()
 
