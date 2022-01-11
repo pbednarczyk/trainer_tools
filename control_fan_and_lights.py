@@ -96,7 +96,7 @@ def main():
         pwr_meter = node.attach_power_meter()
         logging.info('Initializing power light controller')
         plc = PowerLightController(node_stopper.stop_client2, node_stopper.cancel_stop_client2, cfg, pwr_meter, color_strip)
-        plc2 = PowerLightController(node_stopper.stop_client2, node_stopper.cancel_stop_client2, cfg, pwr_meter, color_strip2)
+        plc = PowerLightController(node_stopper.stop_client2, node_stopper.cancel_stop_client2, cfg, pwr_meter, color_strip2)
         logging.info('Starting ANT+ node')
         node.start()
     except Exception as e:
