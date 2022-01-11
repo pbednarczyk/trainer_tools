@@ -49,11 +49,11 @@ def main():
     device_cfg.read('device_settings.cfg')
 
     logging.info('Initializing LED strip driver')
-    # color_strip = ColorStrip(device_cfg, LED_FREQ_HZ)
-    color_strip2 = ColorStrip2(device_cfg, LED_FREQ_HZ)
+    color_strip = ColorStrip(device_cfg, LED_FREQ_HZ)
+    # color_strip2 = ColorStrip2(device_cfg, LED_FREQ_HZ)
 
-    # signal.signal(signal.SIGTERM, lambda : color_strip.set_color(RgbColor(0, 0, 0)))
-    signal.signal(signal.SIGTERM, lambda : color_strip2.set_color(RgbColor(0, 0, 0)))
+    signal.signal(signal.SIGTERM, lambda : color_strip.set_color(RgbColor(0, 0, 0)))
+    # signal.signal(signal.SIGTERM, lambda : color_strip2.set_color(RgbColor(0, 0, 0)))
 
     logging.info('Creating ANT+ node')
     node = AntPlusNode(NETWORK_KEY)
@@ -62,8 +62,8 @@ def main():
         logging.info('Attaching ANT+ power meter')
         pwr_meter = node.attach_power_meter()
         logging.info('Initializing power light controller')
-        # plc = PowerLightController(node.stop, None, cfg, pwr_meter, color_strip)
-        plc2 = PowerLightController(node.stop, None, cfg, pwr_meter, color_strip2)
+        plc = PowerLightController(node.stop, None, cfg, pwr_meter, color_strip)
+        # plc2 = PowerLightController(node.stop, None, cfg, pwr_meter, color_strip2)
         logging.info('Starting ANT+ node')
         node.start()
     except Exception as e:
@@ -71,8 +71,8 @@ def main():
         raise
     finally:
         logging.info('Turning off LED strip')
-        # color_strip.set_color(RgbColor(0, 0, 0))
-        color_strip2.set_color(RgbColor(0, 0, 0))
+        color_strip.set_color(RgbColor(0, 0, 0))
+        # color_strip2.set_color(RgbColor(0, 0, 0))
         logging.info('Stopping ANT+ node')
         node.stop()
 
