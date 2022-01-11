@@ -81,7 +81,7 @@ def main():
     color_strip2 = ColorStrip2(device_cfg, LED_FREQ_HZ)
 
     signal.signal(signal.SIGTERM, lambda : color_strip.set_color(RgbColor(0, 0, 0)))
-    signal.signal(signal.SIGTERM, lambda : color_strip2.set_color(RgbColor(0, 0, 0)))
+   # signal.signal(signal.SIGTERM, lambda : color_strip2.set_color(RgbColor(0, 0, 0)))
 
     logging.info('Creating ANT+ node')
     node = AntPlusNode(NETWORK_KEY)
