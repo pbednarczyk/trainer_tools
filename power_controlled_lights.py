@@ -29,7 +29,7 @@ from scriptcommon import init_logging
 
 from sensors.antnode import AntPlusNode
 from devices.lightstrip import ColorStrip, RgbColor
-from devices.lightstrip2 import ColorStrip2
+# from devices.lightstrip2 import ColorStrip2
 from controllers.pwrlightcontroller import PowerLightController
 
 
