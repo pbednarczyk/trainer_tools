@@ -156,13 +156,13 @@ class neopixelPackage(Package):
         os.system('apt-get install -y gcc make build-essential python-dev git scons swig')
         reboot = self._disbale_audio()
         os.system('git clone https://github.com/rpi-ws281x/rpi-ws281x-python')
-        os.chdir('rpi_ws281x')
+        os.chdir('rpi-ws281x-python')
         os.system('scons')
         os.chdir('python')
         os.system('python3 setup.py build')
         os.system('python3 setup.py install')
         os.chdir('../..')
-        shutil.rmtree('rpi_ws281x')
+        shutil.rmtree('rpi-ws281x-python')
         self._installed = True
         if reboot:
             logging.info('  !!! Please reboot the computer !!!')
