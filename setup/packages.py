@@ -155,7 +155,7 @@ class neopixelPackage(Package):
         logging.info('  Installing "%s"...' % self.name)
         os.system('apt-get install -y gcc make build-essential python-dev git scons swig')
         reboot = self._disbale_audio()
-        os.system('git clone https://github.com/jgarff/rpi_ws281x')
+        os.system('git clone https://github.com/rpi-ws281x/rpi-ws281x-python')
         os.chdir('rpi_ws281x')
         os.system('scons')
         os.chdir('python')
