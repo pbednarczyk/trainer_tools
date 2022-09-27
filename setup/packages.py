@@ -158,7 +158,7 @@ class neopixelPackage(Package):
         os.system('git clone https://github.com/rpi-ws281x/rpi-ws281x-python')
         os.chdir('rpi-ws281x-python')
         os.system('scons')
-        os.chdir('python')
+        os.chdir('library')
         os.system('python3 setup.py build')
         os.system('python3 setup.py install')
         os.chdir('../..')
