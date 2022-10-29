@@ -68,14 +68,17 @@ class FourSpeedRealayFan:
             GPIO.output(self._pin1, self.OFF)
         elif speed == 1:
             GPIO.output(self._pin1, self.ON)
+            time.sleep(1)
             GPIO.output(self._pin3, self.OFF)
             GPIO.output(self._pin2, self.OFF)
         elif speed == 2:
             GPIO.output(self._pin2, self.ON)
+            time.sleep(1)
             GPIO.output(self._pin3, self.OFF)
             GPIO.output(self._pin1, self.OFF)
         elif speed == 3:
             GPIO.output(self._pin3, self.ON)
+            time.sleep(1)
             GPIO.output(self._pin2, self.OFF)
             GPIO.output(self._pin1, self.OFF)
         logging.debug('fan speed set to %u' % speed)
