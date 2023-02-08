@@ -13,7 +13,7 @@ class TrainerToolsService(object):
         self._system = SystemControl()
         self._hr_lock = FileLock("hr.curr.lock")
         self._pwr_lock = FileLock("pwr.curr.lock")
-        self._start_scripts = {'Control Fan and Lights': 'control_fan_and_lights.py', 'HR Controlled Fan': 'hr_controlled_fan.py', 'Power Controlled Lights': 'power_controlled_lights.py'}
+        self._start_scripts = {'Control Fan and Lights': 'control_fan_and_lights.py', 'HR Controlled Fan': 'hr_controlled_fan.py', 'Power Controlled Lights': 'power_controlled_lights.py', 'Cool Rainbow': 'home/pi/leds_neopixel/rainbow.py'}
 
     @cherrypy.expose
     def running(self):
