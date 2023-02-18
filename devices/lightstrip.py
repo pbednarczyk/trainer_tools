@@ -50,8 +50,11 @@ class ColorStrip:
         # Create NeoPixel object with appropriate configuration.
         logging.info('Initializing Neopixel driver with %u LEDs' % device_cfg.getint('LightStrip', 'led_count'))
         self._strip = Adafruit_NeoPixel(device_cfg.getint('LightStrip', 'led_count'), device_cfg.getint('LightStrip', 'pin'), led_freq, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+        self._strip2 = Adafruit_NeoPixel(device_cfg.getint('LightStrip2', 'led_count2'), device_cfg.getint('LightStrip2', 'pin2'), led_freq, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+
         # Intialize the library (must be called once before other functions).
         self._strip.begin()
+        self._strip2.begin()
 
     # Define functions which animate LEDs in various ways.
     def set_color(self, color, wait_ms=0):
@@ -63,5 +66,9 @@ class ColorStrip:
         for i in range(self._strip.numPixels()):
             self._strip.setPixelColor(i, Color(color.green, color.red, color.blue))
             self._strip.show()
+            # time.sleep(wait_ms/1000.0)
+        for i in range(self._strip2.numPixels()):
+            self._strip2.setPixelColor(i, Color(color.green, color.red, color.blue))
+            self._strip2.show()
             # time.sleep(wait_ms/1000.0)
         self._current_color = color
