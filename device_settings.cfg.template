@@ -12,3 +12,8 @@ on_logic=low
 [LightStrip]
 pin=18
 led_count=44
+
+
+[LightStrip2]
+pin2=22
+led_count2=16
