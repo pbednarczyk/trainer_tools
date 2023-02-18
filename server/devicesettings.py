@@ -38,11 +38,11 @@ class DeviceSettings(SettingsBase):
 
     @cherrypy.expose
     def light_strip_pin2(self, light_strip_pin2=None):
-        return self.handle_setting_request('LightStrip2', 'pin2', int, light_strip_pin2)
+        return self.handle_setting_request('LightStripp', 'pin2', int, light_strip_pin2)
 
     @cherrypy.expose
     def light_strip_led_count2(self, light_strip_led_count2=None):
-        return self.handle_setting_request('LightStrip2', 'led_count2', int, light_strip_led_count2)
+        return self.handle_setting_request('LightStripp', 'led_count2', int, light_strip_led_count2)
 
     @cherrypy.expose
     def light_strip_led_count(self, light_strip_led_count=None):
